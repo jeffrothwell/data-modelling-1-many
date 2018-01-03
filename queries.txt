@@ -1,0 +1,19 @@
+1. SELECT * FROM articles WHERE author_id = (
+SELECT id FROM authors WHERE name = 'Kara Melton'
+)
+;
+
+2. SELECT * FROM cities WHERE province_id = (
+SELECT id FROM provinces WHERE name = 'Ontario'
+)
+;
+
+3. SELECT name FROM authors WHERE id = (
+SELECT author_id FROM articles WHERE title = 'Coding Bootcamps and Emotional Labor'
+)
+;
+
+4. SELECT count(*) FROM provinces WHERE country_id = (
+SELECT id FROM countries WHERE name = 'Canada'
+)
+;
