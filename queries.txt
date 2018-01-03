@@ -17,3 +17,41 @@ SELECT author_id FROM articles WHERE title = 'Coding Bootcamps and Emotional Lab
 SELECT id FROM countries WHERE name = 'Canada'
 )
 ;
+
+5.  One way:
+SELECT count(*) FROM residences, persons WHERE
+persons.residence_id = residences.id AND
+residences.address = '4740 McDermott Street';
+
+    Another way:
+SELECT count(*) FROM persons WHERE residence_id = (
+SELECT id FROM residences WHERE address = '4740 McDermott Street'
+)
+;
+
+6. SELECT name FROM cities, residences WHERE
+residences.city_id = cities.id AND
+residences.address = '4740 McDermott Street';
+
+7. SELECT provinces.name FROM provinces, cities, residences WHERE
+provinces.id = cities.province_id AND
+residences.city_id = cities.id AND
+residences.address = '4740 McDermott Street';
+
+8. SELECT countries.name FROM countries, provinces, cities, residences WHERE
+countries.id = provinces.country_id AND
+provinces.id = cities.province_id AND
+residences.city_id = cities.id AND
+residences.address = '4740 McDermott Street';
+
+9. SELECT countries.name FROM countries, provinces, cities,
+residences, persons WHERE
+countries.id = provinces.country_id AND
+provinces.id = cities.province_id AND
+residences.city_id = cities.id AND
+residences.id = persons.residence_id AND
+persons.name = 'Destini Davis';
+
+10. SELECT count(*) FROM articles, authors WHERE
+articles.author_id = authors.id AND
+authors.name = 'Aditya Mukerjee';
